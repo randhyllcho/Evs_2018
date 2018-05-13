@@ -2,7 +2,6 @@ library(tidyverse)
 library(rvest)
 library(tidytext)
 
-
 url <- "http://www.plugincars.com/cars"
 
 page <- read_html(url)
