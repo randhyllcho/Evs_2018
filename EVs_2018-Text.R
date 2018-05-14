@@ -17,9 +17,11 @@ evs %>%
 
 
 evs %>% 
-  filter(title == "Volvo XC60 T8") %>% 
   select(title, detail) %>% 
   unnest_tokens(word, detail) %>% 
   anti_join(stop_words) %>% 
-  inner_join(get_sentiments('afinn')) 
-  
+  inner_join(get_sentiments('bing')) %>% 
+  group_by(sentiment, title) %>% 
+  count() %>% 
+  arrange(desc(n), sentiment) %>% 
+  View()
